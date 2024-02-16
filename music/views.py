@@ -12,11 +12,11 @@ def home(request):
 
 
 def about(request):
-    return HttpResponse("about page")
+    return render(request, 'about.html')
 
 
 def contact(request):
-    return HttpResponse("contact page")
+    return render(request, 'contact.html')
 
 
 def news(request):
