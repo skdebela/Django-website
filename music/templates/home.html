@@ -27,17 +27,17 @@
 						<p class="mt-0">{{ album.genre_list|join:", " }}</p>
 						<!--<p class="mt-0">{{ album.average_rating }}</p>-->
 						<p class="mt-0">
-						{% for i in "12345" %}
+							{% for i in "12345" %}
 							{% if album.average_rating >= forloop.counter %}
-								{% if album.average_rating > forloop.counter %}
-									<i class="bi bi-star-fill text-warning"></i> <!-- Filled star -->
-								{% else %}
-									<i class="bi bi-star-half text-warning"></i> <!-- Half-filled star -->
-								{% endif %}
-								{% else %}
-									<i class="bi bi-star text-warning"></i> <!-- Empty star -->
+							{% if album.average_rating > forloop.counter %}
+							<i class="bi bi-star-fill text-warning"></i> <!-- Filled star -->
+							{% else %}
+							<i class="bi bi-star-half text-warning"></i> <!-- Half-filled star -->
 							{% endif %}
-						{% endfor %}
+							{% else %}
+							<i class="bi bi-star text-warning"></i> <!-- Empty star -->
+							{% endif %}
+							{% endfor %}
 						</p>
 					</div>
 					<a href="{{ album.spotify_link }}" class="btn btn-success" target="_blank">
