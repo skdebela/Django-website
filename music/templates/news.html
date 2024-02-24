@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="py-5 text-center container">
+  <div class="row py-2">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-bold">Music News</h1>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="column">
+    
+    <div class="container">
+        {% for single_news in news %}
+        <div class="row my-2 border rounded">
+            <div class="col-md-3">
+            <!-- Left Column for Cover Image -->
+            <img
+                src="{{ single_news.news_image.url }}"
+                class="img-fluid"
+                alt="Cover Image" 
+                style = "width:auto; height:100%;"
+            
+            />
+            </div>
+            <div class="col-md-9">
+            <!-- Right Column for News Details -->
+            <div class="card border-0">
+                <div class="card-body">
+                <h5 class="card-title">{{ single_news.news_title }}</h5>
+                <p class="card-text text-bolder">{{ single_news.news_detail | truncatechars:200 }}</p>
+                <p class="card-text fw-bold" style="font-size: 0.8rem;">{{ single_news.news_writer }}</p>
+                <p class="card-text" style="font-size: 0.8rem;">{{ single_news.published_date | timesince}} ago</p>
+                </div>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+  </div>
+</div>
+{% endblock %}

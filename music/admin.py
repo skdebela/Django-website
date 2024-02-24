@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Genre, Artist, Album
+from .models import Genre, Artist, Album, News, User_Messages
 
 
 @admin.register(Genre)
@@ -13,3 +13,7 @@ class ArtistAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Album)
+
+admin.site.register(News)
+
+admin.site.register(User_Messages)

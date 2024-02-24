@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-bold">Best of All Time Chart</h1>
+    </div>
+  </div>
+</section>
+
+<div class="container" id="music_list">
+  <div class="row">
+    {% for album in albums %}
+    <div class="col-12 my-3 shadow">
+      <div class="row align-items-center">
+        <!-- Poster -->
+        <div class="col-12 col-md-3">
+          <img src="{{ album.album_art.url }}" class="img-fluid border" alt="Album Art" style="width:auto; height: auto;">
+        </div>
+        <!-- Rank -->
+        <div class="col-1 col-md-1">
+          <h4 class="card-title">{{ forloop.counter }}.</h4>
+        </div>
+        <!-- Details -->
+        <div class="col-11 col-md-5">
+          <div class="card border-0">
+            <div class="card-body">
+              <h5 class="card-title fw-bolder">{{ album.album_name }}</h5>
+              <p class="card-text fw-bold text-success">{{ album.artist_list|join:", " }}</p>
+              <p class="card-text" style="font-size: 0.8rem;">{{ album.release_date }}</p>
+              <p class="card-text">{{ album.genre_list|join:", " }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- Rating & Spotify Link -->
+        <div class="col-11 col-md-3 text-center">
+          <div class="card border-0">
+            <div class="card-body">
+              <p class="card-text">Rating: {{ album.average_rating}}</p>
+
+              <a href="{{ album.spotify_link }}" class="btn btn-success" target="_blank">
+                <i class="bi bi-spotify"></i> Play on Spotify
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

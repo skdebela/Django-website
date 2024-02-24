@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="py-5 text-center container">
+  <div class="row py-lg-5">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <h1 class="fw-bold">New Music</h1>
+
+    </div>
+  </div>
+</section>
+
+<div class="container" id="music_list">
+  <div class="row">
+    {% for album in albums %}
+    <div class="col-12 col-md-6 col-lg-4 mx-auto text-center my-3">
+      <div class="card shadow border-0" style="width: 18rem;">
+        <img src="{{ album.album_art.url }}" class="card-img-top pt-1 shadow" alt="Album Art"
+             style="width:auto; height: 200px; align-self: center">
+        <div class="card-body">
+          <h5 class="card-title">{{ album.album_name }}</h5>
+          <div class="card-text">
+            <p class="my-0 text-primary fw-semibold">{{ album.artist }}</p>
+            <p class="my-0 fw-lighter">{{ album.release_date }}</p>
+            <p class="mt-0">{{ album.genre_list|join:", " }}</p>
+            <!--<p class="mt-0">{{ album.average_rating }}</p>-->
+            <p class="mt-0">
+              {% for i in "12345" %}
+              {% if album.average_rating >= forloop.counter %}
+              {% if album.average_rating > forloop.counter %}
+              <i class="bi bi-star-fill text-warning"></i> <!-- Filled star -->
+              {% else %}
+              <i class="bi bi-star-half text-warning"></i> <!-- Half-filled star -->
+              {% endif %}
+              {% else %}
+              <i class="bi bi-star text-warning"></i> <!-- Empty star -->
+              {% endif %}
+              {% endfor %}
+            </p>
+          </div>
+          <a href="{{ album.spotify_link }}" class="btn btn-success" target="_blank">
+            <i class="bi bi-spotify"></i> Play on Spotify <!-- Spotify icon -->
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

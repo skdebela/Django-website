@@ -17,7 +17,7 @@ class Artist(models.Model):
 
 class Album(models.Model):
 	album_name = models.CharField(max_length=100)
-	artist = models.ForeignKey(Artist, on_delete=models.CASCADE)
+	artists = models.ManyToManyField(Artist)
 	genre = models.ManyToManyField(Genre)
 	album_art = models.ImageField(upload_to='')
 	release_date = models.DateField()
@@ -29,3 +29,27 @@ class Album(models.Model):
 
 	def genre_list(self):
 		return list(self.genre.values_list('genre', flat=True))
+	
+	def artist_list(self):
+		return list(artist.name for artist in self.artists.all())
+
+
+class News(models.Model):
+	news_title = models.CharField(max_length=100)
+	news_writer = models.CharField(max_length=100)
+	published_date = models.DateTimeField(auto_now_add=True)
+	news_detail = models.TextField()
+	news_image = models.ImageField(upload_to='')
+
+	def __str__(self) -> str:
+		return self.news_title
+	
+
+class User_Messages(models.Model):
+	name = models.CharField(max_length=100)
+	email = models.EmailField()
+	subject = models.CharField(max_length=150)
+	message = models.TextField()
+
+	def __str__(self) -> str:
+		return self.subject
