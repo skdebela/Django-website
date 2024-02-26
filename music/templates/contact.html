@@ -1,53 +1,54 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 
+{% block content %}
 <div class="container mt-5">
-  <h2>Contact Us</h2>
-  <p>Please use the form below to send us your support request or feedback.</p>
-  <form action="{% url 'contact' %}" method="POST" class="mt-5">
-    {% csrf_token %}
-    <label for="name">Your Name:</label>
-    <input
-      type="text"
-      class="form-control mb-3"
-      id="name"
-      name="name"
-      required
-    />
+	<h2>Contact Us</h2>
+	<p>Please use the form below to send us your support request or feedback.</p>
+	<form action="{% url 'contact' %}" method="POST" class="mt-5">
+		{% csrf_token %}
+		<label for="name">Your Name:</label>
+		<input
+			type="text"
+			class="form-control mb-3"
+			id="name"
+			name="name"
+			required
+		/>
 
-    <label for="email">Your Email:</label>
-    <input
-      type="email"
-      class="form-control mb-3"
-      id="email"
-      name="email"
-      required
-    />
+		<label for="email">Your Email:</label>
+		<input
+			type="email"
+			class="form-control mb-3"
+			id="email"
+			name="email"
+			required
+		/>
 
-    <label for="subject">Subject:</label>
-    <input
-      type="text"
-      class="form-control mb-3"
-      id="subject"
-      name="subject"
-      required
-    />
+		<label for="subject">Subject:</label>
+		<input
+			type="text"
+			class="form-control mb-3"
+			id="subject"
+			name="subject"
+			required
+		/>
 
-    <label for="message">Message:</label>
-    <textarea
-      class="form-control"
-      id="message"
-      name="message"
-      rows="5"
-      required
-    ></textarea>
-    <button type="submit" class="btn btn-success my-3">Submit</button>
-  </form>
+		<label for="message">Message:</label>
+		<textarea
+			class="form-control"
+			id="message"
+			name="message"
+			rows="5"
+			required
+		></textarea>
+		<button type="submit" class="btn btn-success my-3">Submit</button>
+	</form>
 </div>
 <!-- Bootstrap alert to show success message -->
 {% if success %}
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  Message successfully sent!
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	Message successfully sent!
+	<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 {% endif %}
 
