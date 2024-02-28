@@ -12,12 +12,12 @@
 <div class="container" id="music_list">
   <div class="row">
     {% for album in albums %}
-    <div class="col-12 my-3 shadow">
+    <div class="col-12 my-3">
       <div class="row align-items-center">
         <!-- Poster -->
-        <div class="col-12 col-md-3">
-          <img src="{{ album.album_art.url }}" class="img-fluid border" alt="Album Art" style="width:auto; height: auto;">
-        </div>
+        <a class="col-12 col-md-3" href="{{ album.spotify_link }}">
+          <img src="{{ album.album_art.url }}" class="border shadow" alt="Album Art" style="width:150px; height: 150px;">
+        </a>
         <!-- Rank -->
         <div class="col-1 col-md-1">
           <h4 class="card-title">{{ forloop.counter }}.</h4>
@@ -37,8 +37,7 @@
         <div class="col-11 col-md-3 text-center">
           <div class="card border-0">
             <div class="card-body">
-              <p class="card-text">Rating: {{ album.average_rating}}</p>
-
+              <p class="card-text fw-bolder text-success">{{ album.average_rating }}</p>
               <a href="{{ album.spotify_link }}" class="btn btn-success" target="_blank">
                 <i class="bi bi-spotify"></i> Play on Spotify
               </a>
