@@ -53,3 +53,14 @@ class UserMessage(models.Model):
 
     def __str__(self) -> str:
         return self.subject
+
+
+class Review(models.Model):
+    user = models.CharField(max_length=100)
+    album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    rating = models.FloatField()
+    review = models.TextField()
+    published_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} - {self.album} - {self.rating}"
