@@ -66,7 +66,7 @@ def new_music(request):
 
 def news(request):
     news = News.objects.order_by('-published_date')
-    news = {
+    context = {
         'news': news
     }
-    return render(request, 'news.html', news)
+    return render(request, 'news.html', context)
